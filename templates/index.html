@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Finder | Netflix Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">MOVIE<span>FINDER</span></div>
+        <div class="nav-text">Netflix Recommendation System</div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero">
+            <p class="eyebrow">YOUR PERSONAL ENTERTAINMENT GUIDE</p>
+            <h1>Find Your Perfect <span>Movie Match</span></h1>
+            <p class="hero-description">
+                Choose your preferences and discover movies and TV shows
+                that match your interests.
+            </p>
+        </section>
+
+        <section class="finder-card">
+            <form id="preference-form">
+
+                <div class="question-card">
+                    <p class="question-number">01 / CONTENT TYPE</p>
+                    <h2>What would you like to watch?</h2>
+                    <p class="question-description">Choose your preferred content type.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card">
+                            <input type="radio" name="type" value="Movies">
+                            <span class="option-icon">🎬</span>
+                            <strong>Movies</strong>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="type" value="TV Shows">
+                            <span class="option-icon">📺</span>
+                            <strong>TV Shows</strong>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="type" value="Both" checked>
+                            <span class="option-icon">🍿</span>
+                            <strong>Both</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">02 / GENRES</p>
+                    <h2>Which genres do you enjoy?</h2>
+                    <p class="question-description">Select up to 3 genres.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card"><input type="checkbox" name="genres" value="Action"><span class="option-icon">⚔️</span><strong>Action</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Comedy"><span class="option-icon">😂</span><strong>Comedy</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Drama"><span class="option-icon">🎭</span><strong>Drama</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Romance"><span class="option-icon">❤️</span><strong>Romance</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Thriller"><span class="option-icon">🔍</span><strong>Thriller</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Horror"><span class="option-icon">👻</span><strong>Horror</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Sci-Fi"><span class="option-icon">🚀</span><strong>Sci-Fi</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Fantasy"><span class="option-icon">🐉</span><strong>Fantasy</strong></label>
+                        <label class="option-card"><input type="checkbox" name="genres" value="Documentary"><span class="option-icon">🌍</span><strong>Documentary</strong></label>
+                    </div>
+
+                    <p class="selection-counter">
+                        Selected: <span id="genre-count">0</span> / 3
+                    </p>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">03 / FILM INDUSTRY</p>
+                    <h2>Which film industry do you prefer?</h2>
+                    <p class="question-description">Choose the industry or region you want to explore.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card"><input type="radio" name="industry" value="Any" checked><span class="option-icon">🌐</span><strong>Any</strong></label>
+                        <label class="option-card"><input type="radio" name="industry" value="Hollywood"><span class="option-icon">🇺🇸</span><strong>Hollywood</strong></label>
+                        <label class="option-card"><input type="radio" name="industry" value="Bollywood"><span class="option-icon">🇮🇳</span><strong>Bollywood</strong></label>
+                        <label class="option-card"><input type="radio" name="industry" value="Korean"><span class="option-icon">🇰🇷</span><strong>Korean</strong></label>
+                        <label class="option-card"><input type="radio" name="industry" value="Japanese"><span class="option-icon">🇯🇵</span><strong>Japanese</strong></label>
+                        <label class="option-card"><input type="radio" name="industry" value="Other / International"><span class="option-icon">🌎</span><strong>Other / International</strong></label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">04 / RELEASE YEAR</p>
+                    <h2>Which release period do you prefer?</h2>
+                    <p class="question-description">Choose a release year range.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card"><input type="radio" name="year" value="Any" checked><span class="option-icon">📅</span><strong>Any Year</strong></label>
+                        <label class="option-card"><input type="radio" name="year" value="2020–2026"><span class="option-icon">✨</span><strong>2020–2026</strong></label>
+                        <label class="option-card"><input type="radio" name="year" value="2010–2019"><span class="option-icon">🎞️</span><strong>2010–2019</strong></label>
+                        <label class="option-card"><input type="radio" name="year" value="2000–2009"><span class="option-icon">📀</span><strong>2000–2009</strong></label>
+                        <label class="option-card"><input type="radio" name="year" value="Before 2000"><span class="option-icon">🕰️</span><strong>Before 2000</strong></label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">05 / AUDIENCE</p>
+                    <h2>Choose your audience category</h2>
+                    <p class="question-description">Select the rating category you prefer.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card">
+                            <input type="radio" name="audience" value="Under 18" checked>
+                            <span class="option-icon">👨‍👩‍👧</span>
+                            <strong>Under 18</strong>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="audience" value="Adult (18+)">
+                            <span class="option-icon">🔞</span>
+                            <strong>Adult (18+)</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">06 / DURATION</p>
+                    <h2>How long should the content be?</h2>
+                    <p class="question-description">Choose your preferred duration.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card"><input type="radio" name="duration" value="Any" checked><span class="option-icon">⏱️</span><strong>Any Duration</strong></label>
+                        <label class="option-card"><input type="radio" name="duration" value="Short (under 90 minutes)"><span class="option-icon">⚡</span><strong>Short</strong><small>Under 90 minutes</small></label>
+                        <label class="option-card"><input type="radio" name="duration" value="Medium (90–120 minutes)"><span class="option-icon">🍿</span><strong>Medium</strong><small>90–120 minutes</small></label>
+                        <label class="option-card"><input type="radio" name="duration" value="Long (over 120 minutes)"><span class="option-icon">🎬</span><strong>Long</strong><small>Over 120 minutes</small></label>
+                    </div>
+                    <p class="duration-note">
+                        Duration filtering for TV Shows depends on the season information available in your dataset.
+                    </p>
+                </div>
+
+                <div class="question-card">
+                    <p class="question-number">07 / NUMBER OF RESULTS</p>
+                    <h2>How many recommendations do you want?</h2>
+                    <p class="question-description">Choose how many results to display.</p>
+
+                    <div class="option-grid">
+                        <label class="option-card"><input type="radio" name="count" value="3" checked><span class="option-icon">🎯</span><strong>3 Recommendations</strong></label>
+                        <label class="option-card"><input type="radio" name="count" value="5"><span class="option-icon">⭐</span><strong>5 Recommendations</strong></label>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" id="submit-btn" class="primary-btn">
+                        Find My Recommendations →
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section id="results-section" hidden>
+            <div class="results-heading">
+                <p class="eyebrow">YOUR PERSONALIZED RESULTS</p>
+                <h2>Recommended For You</h2>
+                <p id="results-message"></p>
+            </div>
+
+            <div id="movies-container" class="movies-grid"></div>
+
+            <button type="button" id="restart-btn" class="secondary-btn restart-btn">
+                Start Again
+            </button>
+        </section>
+
+        <p id="error-message" class="error-message" role="alert"></p>
+    </main>
+
+    <footer>
+        <p>Movie Finder | Netflix Recommendation System</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
