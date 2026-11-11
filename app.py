@@ -8,7 +8,15 @@ from recommendation import get_recommendations
 # 1. INITIALIZE FLASK APPLICATION
 # ==========================================
 
-app = Flask(__name__)
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(
+    __name__,
+    static_folder="public",
+    static_url_path=""
+)
 
 
 # ==========================================
