@@ -28,33 +28,6 @@ A content-based Netflix movie and TV show recommendation system built using Pyth
 8. Similar title recommendations
 9. Responsive web interface
 
-## Installation
-
-Install the required libraries:
-
-pip install -r requirements.txt
-
-## Dataset
-
-Place your Netflix dataset in the project root folder.
-
-The filename must be:
-
-netflix_titles.csv
-
-The dataset should contain these columns:
-
-show_id, type, title, director, cast, country, release_year, rating, duration, listed_in, description
-
-## Run the Project
-
-Open the VS Code terminal and execute:
-
-python app.py
-
-Open your browser:
-
-http://127.0.0.1:5000
 
 ## Recommendation Algorithm
 
@@ -72,3 +45,6 @@ Netflix_Recommendation/
 - README.txt
 - templates/index.html
 - static/style.css
+
+## Deployed on vercel 
+   visit:https://movierecommandationwebsite.vercel.app/
